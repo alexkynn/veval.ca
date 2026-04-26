@@ -1,0 +1,293 @@
+import React from 'react';
+import { 
+  Car, 
+  ShieldCheck, 
+  Clock, 
+  MapPin, 
+  ChevronRight
+} from 'lucide-react';
+
+// --- MAIN APPLICATION COMPONENT ---
+export default function App() {
+  return (
+    <div className="min-h-screen bg-[#f5f5f7] font-sans text-[#1d1d1f] selection:bg-[#0071e3] selection:text-white">
+      <NavBar />
+      <HeroSection />
+      <FeaturesSection />
+      <FleetSection />
+      <Footer />
+    </div>
+  );
+}
+
+// --- SUB-COMPONENTS ---
+
+function NavBar() {
+  return (
+    <nav className="fixed top-0 left-0 right-0 h-14 bg-white/80 backdrop-blur-md border-b border-gray-200/50 z-40 flex items-center justify-between px-4 md:px-8">
+      <div className="flex items-center">
+        <img 
+          src="VeVaL logo.jpg" 
+          alt="VeVaL Logo" 
+          className="h-8 w-auto object-contain mix-blend-multiply" 
+        />
+      </div>
+      <div className="hidden md:flex space-x-8 text-base font-medium tracking-wide text-gray-500">
+        <a href="#fleet" className="hover:text-black transition-colors">Fleet</a>
+        <a href="#destinations" className="hover:text-black transition-colors">Destinations</a>
+      </div>
+      <a 
+        href="https://vevaci.fillout.com/veval_airport_transfer"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-base font-medium bg-[#0071e3] text-white px-6 py-2 rounded-full hover:bg-[#0077ED] transition-colors"
+      >
+        Book Now
+      </a>
+    </nav>
+  );
+}
+
+function HeroSection() {
+  return (
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 overflow-hidden bg-white text-center flex flex-col items-center justify-center">
+      <div className="max-w-4xl mx-auto z-10">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#1d1d1f] mb-4">
+          Arrive in style.<br className="hidden md:block" /> On time, every time.
+        </h1>
+        <p className="text-xl md:text-2xl text-[#86868b] font-medium mb-10 max-w-2xl mx-auto">
+          Premium Private Airport Transfer from Markham and Richmond Hill to Toronto Pearson Airport (YYZ).
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <a 
+            href="https://vevaci.fillout.com/veval_airport_transfer"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#1d1d1f] text-white text-lg font-medium px-8 py-3 rounded-full hover:bg-black transition-all flex items-center shadow-lg hover:shadow-xl"
+          >
+            Get a Quote <ChevronRight size={20} className="ml-1" />
+          </a>
+        </div>
+      </div>
+      
+      {/* Abstract sleek background shape representing a premium vehicle silhouette */}
+      <div className="absolute bottom-[-10%] left-1/2 transform -translate-x-1/2 w-[120%] max-w-[1200px] h-64 md:h-96 bg-gradient-to-t from-gray-100 to-transparent rounded-t-full opacity-50 pointer-events-none" />
+    </section>
+  );
+}
+
+function FeaturesSection() {
+  const features = [
+    {
+      icon: <Clock size={32} className="text-[#0071e3] mb-4" />,
+      title: "Real-time Flight Tracking",
+      desc: "We monitor your flight status automatically. Early or delayed, we'll be there when you land."
+    },
+    {
+      icon: <ShieldCheck size={32} className="text-[#0071e3] mb-4" />,
+      title: "Fixed, Transparent Pricing",
+      desc: "No hidden fees or surge pricing. You'll always know your fare before you confirm your booking."
+    },
+    {
+      icon: <MapPin size={32} className="text-[#0071e3] mb-4" />,
+      title: "GTA Specialists",
+      desc: "Experts in navigating routes from Markham and Richmond Hill to YYZ for optimal travel times."
+    }
+  ];
+
+  return (
+    <section id="features" className="py-24 px-4 bg-[#f5f5f7]">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-5xl font-semibold text-center mb-16 tracking-tight">
+          A superior travel experience.
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {features.map((f, i) => (
+            <div key={i} className="flex flex-col items-center text-center p-6 bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+              {f.icon}
+              <h3 className="text-xl font-semibold mb-2">{f.title}</h3>
+              <p className="text-[#86868b] text-base leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FleetSection() {
+  return (
+    <section id="fleet" className="py-24 px-4 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-5xl font-semibold text-center mb-16 tracking-tight">
+          Our Premium Fleet
+        </h2>
+        <div className="flex flex-col md:flex-row items-center gap-12 bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+          <div className="flex-1 w-full h-64 md:h-96 relative bg-gray-200">
+            <img
+              src="Chrysler Pacifica.jpg"
+              alt="Black 2018 Chrysler Pacifica Limited Edition"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="flex-1 p-8 md:p-12">
+            <div className="inline-block px-3 py-1 bg-[#1d1d1f] text-white text-xs font-semibold rounded-full mb-4 uppercase tracking-wider">
+              Flagship Vehicle
+            </div>
+            <h3 className="text-2xl md:text-4xl font-bold mb-6 tracking-tight">Chrysler Pacifica Limited Edition</h3>
+            
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-[#1d1d1f] mb-1">Passenger Capacity</h4>
+                <p className="text-[#86868b] text-base leading-relaxed">
+                  Comfortably accommodates up to 8 passengers. Features premium leather seating and generous legroom across all three rows to ensure a comfortable journey.
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold text-[#1d1d1f] mb-1">Base Trunk Space</h4>
+                <p className="text-[#86868b] text-base leading-relaxed">
+                  Provides a deep 32.3 cubic feet of dedicated cargo space even at maximum passenger capacity. This securely fits standard checked luggage and carry-ons for the entire group.
+                </p>
+              </div>
+              
+              <div>
+                <h4 className="text-lg font-semibold text-[#1d1d1f] mb-1">Flexible Cargo Expansion</h4>
+                <p className="text-[#86868b] text-base leading-relaxed">
+                  For smaller groups traveling with extra, oversized, or bulky bags, the third-row Stow 'n Go seats fold completely flat into the floor. This instantly expands the cargo volume to a massive 87.5 cubic feet to handle maximum luggage requirements.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  const [showPrivacy, setShowPrivacy] = React.useState(false);
+  const [showTerms, setShowTerms] = React.useState(false);
+
+  return (
+    <>
+      <footer className="bg-[#1d1d1f] text-gray-400 py-12 px-4 text-sm">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <span className="text-white font-semibold text-lg">VeVaL</span>
+            <p className="mt-1">Premium Airport Transfers in the GTA.</p>
+          </div>
+          <div className="flex space-x-6">
+            <button onClick={() => setShowPrivacy(true)} className="hover:text-white transition-colors cursor-pointer">Privacy Policy</button>
+            <button onClick={() => setShowTerms(true)} className="hover:text-white transition-colors cursor-pointer">Terms of Service</button>
+            <a href="#" className="hover:text-white transition-colors">Contact</a>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-gray-800 text-center md:text-left">
+          <p>© 2026 VeVaL Airport Transfer. All rights reserved.</p>
+        </div>
+      </footer>
+
+      {showPrivacy && <PrivacyPolicyModal onClose={() => setShowPrivacy(false)} />}
+      {showTerms && <TermsOfServiceModal onClose={() => setShowTerms(false)} />}
+    </>
+  );
+}
+
+function PrivacyPolicyModal({ onClose }) {
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+      <div className="bg-white w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-3xl shadow-2xl p-8 md:p-12 relative text-[#1d1d1f]">
+        <button 
+          onClick={onClose}
+          className="absolute top-6 right-6 p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+          aria-label="Close"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <h2 className="text-3xl font-bold mb-2 tracking-tight">Privacy Policy</h2>
+        <p className="text-sm text-gray-500 mb-8">Last Updated: April 25, 2026</p>
+        
+        <div className="space-y-6 text-gray-600 leading-relaxed">
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">1. Information We Collect</h3>
+            <p>VeVaL Airport Transfers collects personal information necessary to fulfill your transportation requests. This includes your name, contact information (email, phone number), pickup/drop-off locations, and flight details (airline, flight number, arrival/departure times).</p>
+          </section>
+          
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">2. How We Use Your Information</h3>
+            <p>Your data is strictly used to provide, coordinate, and communicate regarding your airport transfer. We utilize your flight details for real-time tracking to ensure on-time pickups. We may use your contact information to send booking confirmations, status updates, and digital receipts.</p>
+          </section>
+          
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">3. Data Protection & PIPEDA Compliance</h3>
+            <p>In accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Ontario provincial regulations, we safeguard your data using industry-standard encryption. Booking and payment data are securely processed through trusted third-party providers. We do not store sensitive credit card information on our local servers.</p>
+          </section>
+          
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">4. Third-Party Disclosure</h3>
+            <p>VeVaL Airport Transfers does not sell, trade, or rent your personal information to third parties. Information is only shared with our assigned drivers to the extent necessary to execute your transfer safely and efficiently.</p>
+          </section>
+          
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">5. Contact Us</h3>
+            <p>If you have any questions or concerns regarding this privacy policy or your data, please contact our compliance team directly via our main contact channels.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TermsOfServiceModal({ onClose }) {
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+      <div className="bg-white w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-3xl shadow-2xl p-8 md:p-12 relative text-[#1d1d1f]">
+        <button 
+          onClick={onClose}
+          className="absolute top-6 right-6 p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+          aria-label="Close"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <h2 className="text-3xl font-bold mb-2 tracking-tight">Terms of Service</h2>
+        <p className="text-sm text-gray-500 mb-8">Last Updated: April 25, 2026</p>
+        
+        <div className="space-y-6 text-gray-600 leading-relaxed">
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">1. Bookings and Confirmations</h3>
+            <p>All transfer requests made through our platform or partner forms (e.g., Fillout) are subject to availability. A booking is only considered confirmed once you receive a formal confirmation email from VeVaL Airport Transfers. Fares are fixed for the specified route (e.g., Markham/Richmond Hill to Toronto Pearson YYZ) as agreed upon prior to dispatch.</p>
+          </section>
+          
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">2. Cancellations and Modifications</h3>
+            <p>In adherence to fair consumer practices in Ontario, cancellations made up to 24 hours prior to the scheduled pickup time are eligible for a full refund or free cancellation. Cancellations within 24 hours of the pickup time may be subject to a late cancellation fee up to the full fare amount.</p>
+          </section>
+          
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">3. Passenger & Luggage Capacity</h3>
+            <p>Our flagship vehicle (Chrysler Pacifica Limited) safely seats a maximum of 8 passengers. Luggage is restricted to the physical dimensions of the vehicle's cargo space. VeVaL reserves the right to refuse service without refund if the party size or luggage exceeds legal safety limits or vehicle capacity.</p>
+          </section>
+          
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">4. Wait Times and Flight Delays</h3>
+            <p>We monitor incoming flights in real-time. For airport pickups, we provide a complimentary wait time of up to 60 minutes after the flight has landed. For home pickups, a grace period of 15 minutes is provided. Additional wait time may incur supplementary charges.</p>
+          </section>
+          
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">5. Limitation of Liability</h3>
+            <p>While we strive for perfect punctuality, VeVaL Airport Transfers is not liable for delays, missed flights, or resulting financial losses caused by circumstances beyond our control (Force Majeure), including but not limited to severe weather conditions, unpredicted traffic accidents, road closures, or instructions by law enforcement.</p>
+          </section>
+          
+          <section>
+            <h3 className="text-xl font-semibold text-[#1d1d1f] mb-3">6. Governing Law</h3>
+            <p>These terms and any disputes arising from your use of VeVaL Airport Transfers shall be governed by and construed in accordance with the laws of the Province of Ontario and the federal laws of Canada applicable therein.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
