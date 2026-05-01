@@ -28,9 +28,30 @@
                 class="h-16 w-auto object-contain mix-blend-multiply" 
             />
         </div>
-        <div class="hidden md:flex space-x-8 text-base font-medium tracking-wide text-gray-500">
-            <a href="#fleet" class="hover:text-black transition-colors">Fleet</a>
-            <a href="#destinations" class="hover:text-black transition-colors">Destinations</a>
+        <div class="hidden md:flex space-x-8 text-base font-medium tracking-wide text-gray-500 items-center">
+            <a href="#fleet" class="hover:text-black transition-colors">Our Premium Fleet</a>
+            
+            <div class="relative group">
+                <a href="#destinations" class="hover:text-black transition-colors flex items-center gap-1">
+                    Pickup/Drop-off Locations
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 group-hover:rotate-180 transition-transform duration-200"><path d="m6 9 6 6 6-6"/></svg>
+                </a>
+                
+                <!-- Invisible extension to bridge the hover gap -->
+                <div class="absolute pt-4 left-1/2 transform -translate-x-1/2 top-full w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div class="bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden py-2 flex flex-col">
+                        <a href="#destinations" class="px-4 py-2.5 text-sm text-gray-500 hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-colors text-center">Aurora</a>
+                        <a href="#destinations" class="px-4 py-2.5 text-sm text-gray-500 hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-colors text-center">Markham</a>
+                        <a href="#destinations" class="px-4 py-2.5 text-sm text-gray-500 hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-colors text-center">Newmarket</a>
+                        <a href="#destinations" class="px-4 py-2.5 text-sm text-gray-500 hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-colors text-center">North York</a>
+                        <a href="#destinations" class="px-4 py-2.5 text-sm text-gray-500 hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-colors text-center">Richmond Hill</a>
+                        <a href="#destinations" class="px-4 py-2.5 text-sm text-gray-500 hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-colors text-center">Scarborough</a>
+                        <a href="#destinations" class="px-4 py-2.5 text-sm text-gray-500 hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-colors text-center">Stouffville</a>
+                        <a href="#destinations" class="px-4 py-2.5 text-sm text-gray-500 hover:bg-[#f5f5f7] hover:text-[#1d1d1f] transition-colors text-center">Vaughan</a>
+                    </div>
+                </div>
+            </div>
+            
         </div>
         <a 
             href="https://vevaci.fillout.com/veval_airport_transfer"
@@ -49,7 +70,7 @@
                 Arrive in style.<br class="hidden md:block" /> On time, every time.
             </h1>
             <p class="text-xl md:text-2xl text-[#86868b] font-medium mb-10 max-w-2xl mx-auto">
-                Premium Private Airport Transfer from Markham and Richmond Hill to Toronto Pearson Airport (YYZ).
+                Premium Private Airport Transfer from the GTA to Toronto Pearson Airport (YYZ).
             </p>
             <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <a 
@@ -91,7 +112,7 @@
                 <div class="flex flex-col items-center text-center p-6 bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#0071e3] mb-4"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     <h3 class="text-xl font-semibold mb-2">GTA Specialists</h3>
-                    <p class="text-[#86868b] text-base leading-relaxed">Experts in navigating routes from Markham and Richmond Hill to YYZ for optimal travel times.</p>
+                    <p class="text-[#86868b] text-base leading-relaxed">Experts in navigating routes from Aurora, Markham, Newmarket, North York, Richmond Hill, Scarborough, Stouffville, and Vaughan to YYZ for optimal travel times.</p>
                 </div>
 
             </div>
@@ -105,12 +126,21 @@
                 Our Premium Fleet
             </h2>
             <div class="flex flex-col md:flex-row items-center gap-12 bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-sm border border-gray-100">
-                <div class="flex-1 w-full h-64 md:h-96 relative bg-gray-200">
-                    <img
-                        src="Chrysler_Pacifica.png"
-                        alt="Black 2018 Chrysler Pacifica Limited Edition"
-                        class="w-full h-full object-contain"
-                    />
+                <div class="flex-1 w-full flex flex-col divide-y divide-white">
+                    <div class="w-full h-64 md:h-80 relative bg-gray-200">
+                        <img
+                            src="Chrysler_Pacifica.png"
+                            alt="Black 2018 Chrysler Pacifica Limited Edition Exterior"
+                            class="w-full h-full object-contain p-4"
+                        />
+                    </div>
+                    <div class="w-full h-64 md:h-80 relative bg-gray-200">
+                        <img
+                            src="Chrysler_Pacifica_Interior.PNG"
+                            alt="Black 2018 Chrysler Pacifica Limited Edition Interior"
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
                 </div>
                 <div class="flex-1 p-8 md:p-12">
                     <div class="inline-block px-3 py-1 bg-[#1d1d1f] text-white text-xs font-semibold rounded-full mb-4 uppercase tracking-wider">
@@ -122,7 +152,7 @@
                         <div>
                             <h4 class="text-lg font-semibold text-[#1d1d1f] mb-1">Passenger Capacity</h4>
                             <p class="text-[#86868b] text-base leading-relaxed">
-                                Comfortably accommodates up to 8 passengers. Features premium leather seating and generous legroom across all three rows to ensure a comfortable journey.
+                                Comfortably accommodates up to 7 passengers. Features premium leather seating and generous legroom across all three rows to ensure a comfortable journey.
                             </p>
                         </div>
                         
@@ -159,7 +189,7 @@
             </div>
         </div>
         <div class="max-w-6xl mx-auto mt-8 pt-8 border-t border-gray-800 text-center md:text-left">
-            <p>© 2026 VeVaL Airport Transfer. All rights reserved.</p>
+            <p>© 2026 VeVaL Airport Transfers. All rights reserved.</p>
         </div>
     </footer>
 
@@ -227,7 +257,7 @@
                 </section>
                 <section>
                     <h3 class="text-xl font-semibold text-[#1d1d1f] mb-3">3. Passenger & Luggage Capacity</h3>
-                    <p>Our flagship vehicle (Chrysler Pacifica Limited) safely seats a maximum of 8 passengers. Luggage is restricted to the physical dimensions of the vehicle's cargo space. VeVaL reserves the right to refuse service without refund if the party size or luggage exceeds legal safety limits or vehicle capacity.</p>
+                    <p>Our flagship vehicle (Chrysler Pacifica Limited) safely seats a maximum of 7 passengers. Luggage is restricted to the physical dimensions of the vehicle's cargo space. VeVaL reserves the right to refuse service without refund if the party size or luggage exceeds legal safety limits or vehicle capacity.</p>
                 </section>
                 <section>
                     <h3 class="text-xl font-semibold text-[#1d1d1f] mb-3">4. Wait Times and Flight Delays</h3>
