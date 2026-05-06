@@ -17,7 +17,54 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-[#f5f5f7] font-sans text-[#1d1d1f] selection:bg-[#0071e3] selection:text-white">
+<body class="min-h-screen bg-[#f5f5f7] font-sans text-[#1d1d1f] selection:bg-[#0071e3] selection:text-white overflow-hidden">
+
+    <!-- Invitation Overlay -->
+    <div id="inviteOverlay" class="fixed inset-0 z-[9999] bg-[#f5f5f7] flex flex-col items-center justify-center p-4 transition-opacity duration-500">
+        <button id="langToggleLogin" class="absolute top-6 right-6 text-sm font-semibold text-gray-500 hover:text-black transition-colors flex items-center px-2">
+            <span class="lang-en">繁體中文</span>
+            <span class="lang-zh hidden">EN</span>
+        </button>
+        <div class="max-w-md w-full bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center">
+            <video 
+                src="Flying_VeVaL.mp4" 
+                autoplay 
+                loop 
+                muted 
+                playsinline 
+                class="h-80 w-auto mx-auto mb-8 object-contain mix-blend-multiply"
+                aria-label="Flying VeVaL Animation"
+            ></video>
+            <p class="text-[#86868b] text-sm mb-8">
+                <span class="lang-en">Please enter your invitation code to access the site.</span>
+                <span class="lang-zh hidden">請輸入您的邀請碼以訪問本網站。</span>
+            </p>
+            <form id="inviteForm" class="space-y-4">
+                <div>
+                    <input type="password" id="inviteCode" placeholder="Code" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#0071e3] focus:border-transparent transition-all text-center text-lg tracking-widest" />
+                </div>
+                <p id="inviteError" class="text-red-500 text-sm hidden">
+                    <span class="lang-en">Incorrect code. Please try again.</span>
+                    <span class="lang-zh hidden">代碼不正確。請重試。</span>
+                </p>
+                <button type="submit" class="w-full bg-[#1d1d1f] text-white font-medium py-3 rounded-xl hover:bg-black transition-colors">
+                    <span class="lang-en">Enter</span>
+                    <span class="lang-zh hidden">進入</span>
+                </button>
+            </form>
+            
+            <!-- Beta Disclaimer -->
+            <div class="mt-8 pt-6 border-t border-gray-100 text-xs text-gray-500 text-left leading-relaxed">
+                <span class="font-semibold text-gray-700">
+                    <span class="lang-en">Beta Notice:</span>
+                    <span class="lang-zh hidden">測試版通知：</span>
+                </span>
+                <span class="lang-en">This website is currently in a closed beta testing phase. Access and services are strictly limited to invited friends and family with a valid invitation code.</span>
+                <span class="lang-zh hidden">本網站目前處於封閉測試階段。網站訪問及接送服務僅限持有有效邀請碼的受邀親友使用。</span>
+            </div>
+
+        </div>
+    </div>
 
     <!-- NavBar Section -->
     <nav class="fixed top-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-md border-b border-gray-200/50 z-40 flex items-center justify-between px-4 md:px-8">
@@ -596,6 +643,42 @@
     <!-- Vanilla JavaScript for Modals & Language Toggle -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Invitation Overlay Logic
+            const inviteOverlay = document.getElementById('inviteOverlay');
+            const inviteForm = document.getElementById('inviteForm');
+            const inviteCode = document.getElementById('inviteCode');
+            const inviteError = document.getElementById('inviteError');
+            const langToggleLogin = document.getElementById('langToggleLogin');
+
+            // Check if user already unlocked the site in this session
+            if (sessionStorage.getItem('veval_unlocked') === 'true') {
+                inviteOverlay.style.display = 'none';
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            inviteForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Code is obfuscated using Base64 encoding to hide it from plain sight
+                if (btoa(inviteCode.value) === 'MjAyNg==') {
+                    sessionStorage.setItem('veval_unlocked', 'true'); // Save state so they don't have to log in on refresh
+                    inviteOverlay.style.opacity = '0'; // Smooth fade out
+                    setTimeout(() => {
+                        inviteOverlay.style.display = 'none';
+                        document.body.classList.remove('overflow-hidden'); // Restore scrolling
+                    }, 500); 
+                } else {
+                    inviteError.classList.remove('hidden');
+                    inviteCode.value = '';
+                    inviteCode.focus();
+                }
+            });
+
+            // Make the login screen language toggle use the existing header toggle logic
+            langToggleLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('langToggle').click(); 
+            });
+
             // Language Toggle Logic
             const langToggle = document.getElementById('langToggle');
             let isZh = false;
