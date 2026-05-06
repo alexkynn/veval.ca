@@ -125,15 +125,40 @@
             </button>
         </div>
 
-        <a 
-            href="https://vevaci.fillout.com/veval_airport_transfer"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-base font-medium bg-[#0071e3] text-white px-6 py-2 rounded-full hover:bg-[#0077ED] transition-colors"
-        >
-            <span class="lang-en">Book Now</span>
-            <span class="lang-zh hidden">立即預訂</span>
-        </a>
+        <div class="flex items-center space-x-3 md:space-x-0">
+            <a 
+                href="https://vevaci.fillout.com/veval_airport_transfer"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm md:text-base font-medium bg-[#0071e3] text-white px-5 md:px-6 py-2 rounded-full hover:bg-[#0077ED] transition-colors"
+            >
+                <span class="lang-en">Book Now</span>
+                <span class="lang-zh hidden">立即預訂</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-gray-500 hover:text-black focus:outline-none p-1" aria-label="Toggle Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden absolute top-20 left-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xl flex-col px-6 py-6 space-y-6 md:hidden z-30">
+            <a href="#fleet" class="mobile-link text-lg font-medium text-gray-700 hover:text-[#0071e3] transition-colors">
+                <span class="lang-en">Our Premium Fleet</span>
+                <span class="lang-zh hidden">我們的頂級車隊</span>
+            </a>
+            <a href="#destinations" class="mobile-link text-lg font-medium text-gray-700 hover:text-[#0071e3] transition-colors">
+                <span class="lang-en">Pickup/Drop-off Locations</span>
+                <span class="lang-zh hidden">接送地點</span>
+            </a>
+            <div class="pt-2 border-t border-gray-100">
+                <button id="langToggleMobileMenu" class="text-left text-lg font-medium text-gray-700 hover:text-[#0071e3] transition-colors w-full">
+                    <span class="lang-en">繁體中文</span>
+                    <span class="lang-zh hidden">English</span>
+                </button>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -141,7 +166,7 @@
         <div class="max-w-4xl mx-auto z-10">
             <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-[#1d1d1f] mb-4">
                 <span class="lang-en">Arrive in Style.<br class="hidden md:block" /> On Time, Every Time.</span>
-                <span class="lang-zh hidden">尊尚登場。<br class="hidden md:block" /> 準時抵達。</span>
+                <span class="lang-zh hidden">尊尚登場<br />準時抵達</span>
             </h1>
             <p class="text-xl md:text-2xl text-[#86868b] font-medium mb-10 max-w-2xl mx-auto">
                 <span class="lang-en">Premium Private Airport Transfer from the GTA to Toronto Pearson Airport (YYZ).</span>
@@ -752,18 +777,47 @@
             });
 
             // Close Modals via click outside the box
-            window.addEventListener('click', (e) => {
-                if (e.target === modalPrivacy) {
-                    modalPrivacy.style.display = 'none';
-                }
-                if (e.target === modalTerms) {
-                    modalTerms.style.display = 'none';
-                }
-                if (e.target === modalContact) {
-                    modalContact.style.display = 'none';
-                }
-            });
+        window.addEventListener('click', (e) => {
+            if (e.target === modalPrivacy) {
+                modalPrivacy.style.display = 'none';
+            }
+            if (e.target === modalTerms) {
+                modalTerms.style.display = 'none';
+            }
+            if (e.target === modalContact) {
+                modalContact.style.display = 'none';
+            }
         });
+
+        // Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const langToggleMobileMenu = document.getElementById('langToggleMobileMenu');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+        }
+
+        if (mobileLinks) {
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                });
+            });
+        }
+
+        if (langToggleMobileMenu) {
+            langToggleMobileMenu.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('langToggle').click(); 
+            });
+        }
+    });
     </script>
 </body>
 </html>
